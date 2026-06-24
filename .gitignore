@@ -1,0 +1,11 @@
+node_modules/
+dist/*.js
+dist/*.cjs
+dist/*.css
+ds-bundle/
+.ds-sync/
+.design-sync/sb-reference/
+.design-sync/learnings/
+.design-sync/.cache/
+.design-sync/node_modules
+.DS_Store

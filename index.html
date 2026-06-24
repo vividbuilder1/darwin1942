@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darwin 1942 — The Forgotten War That Reshaped Australia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper:   '#FDFDF9',
+            ivory:   '#E1D6C6',
+            crimson: { DEFAULT: '#910E1A', dark: '#a81220' },
+          },
+          fontFamily: {
+            display: ['Oswald', 'Arial Narrow', 'Arial', 'sans-serif'],
+            quote:   ['Cormorant Garamond', 'Georgia', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* ── Viewport rhythm tokens (clamp values can't be expressed as Tailwind utilities) ── */
+    :root {
+      --rhy-eyebrow:  clamp(16px, 3vh,   32px);
+      --rhy-subtitle: clamp(36px, 6.5vh, 70px);
+      --rhy-quote:    clamp(12px, 2.2vh, 24px);
+      --rhy-attr:     clamp(40px, 8.3vh, 90px);
+    }
+
+    html { height: 100%; }
+
+    /* Full-viewport hero canvas */
+    .hero { height: 100vh; height: 100dvh; }
+
+    /* Archival photo — compound filter can't be composed with Tailwind utilities */
+    .hero__bg {
+      inset: -2%;
+      background: url('assets/hero.jpg') center 36% / cover no-repeat;
+      filter: grayscale(100%) sepia(35%) contrast(1.18) brightness(0.64);
+      transform: scale(1.02);
+    }
+
+    /* Brand gradient — left to right: cream → amber → black */
+    .hero__atmosphere {
+      background: #FDFDF9;
+      background: linear-gradient(
+        90deg,
+        rgba(253, 253, 249, 1)  0%,
+        rgba(255, 219, 180, 1) 43%,
+        rgba(  0,   0,   0, 1) 100%
+      );
+    }
+
+    /* Side caption — clamp-based positioning + writing-mode have no Tailwind equivalent */
+    .hero__side {
+      left: clamp(2rem, 3.5vw, 4.5rem);
+      top:  clamp(3rem, 4.8vw, 5.5rem);
+      gap:  clamp(2rem, 3.5vh, 3rem);
+    }
+
+    .hero__side-text {
+      writing-mode:   vertical-lr;
+      font-size:      clamp(0.6rem, 0.85vw, 0.875rem);
+      letter-spacing: 0.04em;
+    }
+
+    .hero__side-line { height: clamp(8rem, 26vh, 17rem); }
+
+    /* Content column */
+    .hero__content {
+      max-width:      1180px;
+      padding-inline: clamp(1.25rem, 2vw, 3.5rem);
+    }
+
+    .hero__eyebrow {
+      font-size:      clamp(0.65rem, 1.1vw, 1.375rem);
+      letter-spacing: 0.08em;
+      color:          rgba(253, 253, 249, .85);   /* paper at 85% — no Tailwind token */
+      margin-bottom:  var(--rhy-eyebrow);
+    }
+
+    .hero__title     { margin-bottom: var(--rhy-subtitle); }
+    .hero__title img { width: clamp(20rem, 55vw, 68rem); max-width: 100%; }
+
+    .hero__quote {
+      font-size:     clamp(2rem, 3.33vw, 4rem);
+      line-height:   1.2;
+      margin-bottom: var(--rhy-quote);
+    }
+
+    .hero__attr {
+      font-size:      clamp(0.65rem, 1vw, 1.1875rem);
+      letter-spacing: 0.06em;
+      margin-bottom:  var(--rhy-attr);
+    }
+
+    /* Button sizing — all clamp/viewport values */
+    .btn {
+      min-width:      clamp(14rem, 27vw, 33.5rem);
+      height:         clamp(52px, 6.85vh, 74px);
+      padding-inline: clamp(2rem, 4.5vw, 5rem);
+      font-size:      clamp(0.7rem, 0.88vw, 1.05rem);
+      letter-spacing: 0.18em;
+      transition:     background 0.22s ease, border-color 0.22s ease;
+    }
+
+    /* Pseudo-selectors can't live on HTML elements */
+    .btn--primary:hover  { background: #a81220; }
+    .btn--secondary:hover { background: rgba(255, 255, 255, .08); }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .hero__side      { display: none; }
+      .hero__content   { padding-inline: 1rem; }
+      .hero__title img { width: min(100%, 420px); }
+      .hero__ctas      { flex-direction: column; align-items: center; gap: 0.5rem; width: 100%; max-width: 420px; }
+      .btn             { width: 100%; min-width: unset; height: auto; padding: 1rem 2rem; }
+    }
+  </style>
+</head>
+<body class="h-full overflow-hidden bg-black text-paper font-display">
+
+  <section class="hero relative flex items-center justify-center overflow-hidden isolate"
+           aria-label="Darwin 1942 documentary">
+
+    <!-- Layer 0: archival photo -->
+    <div class="hero__bg absolute z-0"></div>
+
+    <!-- Layer 1: dark wash -->
+    <div class="absolute inset-0 z-[1] bg-black/[.32]"></div>
+
+    <!-- Layer 2: brand gradient, multiply-blended over the photo -->
+    <div class="hero__atmosphere absolute inset-0 z-[2] mix-blend-multiply pointer-events-none"></div>
+
+    <!-- Left archive caption -->
+    <div class="hero__side absolute z-[4] flex flex-col items-center" aria-hidden="true">
+      <span class="hero__side-text uppercase whitespace-nowrap font-normal text-white/[.72]">
+        Archive Image Darwin Harbour 19 February 1942
+      </span>
+      <div class="hero__side-line w-px bg-white/[.62] shrink-0"></div>
+    </div>
+
+    <!-- Centred content column -->
+    <div class="hero__content relative z-[4] flex flex-col items-center text-center w-full">
+
+      <p class="hero__eyebrow font-light uppercase text-[20px]">A Documentary Feature in Production</p>
+
+      <h1 class="hero__title">
+        <img src="assets/logo-white.png"
+             alt="Darwin 1942 — The forgotten war that reshaped Australia."
+             class="block h-auto">
+      </h1>
+
+      <blockquote class="hero__quote font-bold italic font-quote text-ivory">
+        "The largest attack ever carried<br>out on Australian soil."
+      </blockquote>
+
+      <cite class="hero__attr block not-italic font-medium uppercase text-paper text-[15px]">
+        Australian War Memorial
+      </cite>
+
+      <div class="hero__ctas flex items-stretch justify-center">
+        <a class="btn btn--primary inline-flex items-center justify-center no-underline whitespace-nowrap cursor-pointer uppercase font-medium bg-crimson text-paper"
+           href="https://tvgroup.com.au/donate-darwin1942/"
+           target="_blank" rel="noopener noreferrer">
+          Support This Project
+        </a>
+        <a class="btn btn--secondary inline-flex items-center justify-center no-underline whitespace-nowrap cursor-pointer uppercase font-medium bg-transparent border border-white/[.55] text-paper"
+           href="https://www.facebook.com/groups/bombing.of.darwin.documentary.stories"
+           target="_blank" rel="noopener noreferrer">
+          Tell Us a Veteran Story
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

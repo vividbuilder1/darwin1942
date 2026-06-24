@@ -1,0 +1,32 @@
+{
+  "projectId": "e1fffaa2-41bd-4e22-8a72-5a4d9fcd5eda",
+  "shape": "storybook",
+  "readmeHeader": ".design-sync/conventions.md",
+  "pkg": "darwin1942-design-system",
+  "globalName": "Darwin1942DS",
+  "storybookStatic": ".design-sync/sb-reference",
+  "storybookConfigDir": ".storybook",
+  "buildCmd": "npm run build",
+  "tsconfig": "tsconfig.json",
+  "componentSrcMap": {
+    "Button":         "src/components/Button/Button.jsx",
+    "Eyebrow":        "src/components/Eyebrow/Eyebrow.jsx",
+    "PullQuote":      "src/components/PullQuote/PullQuote.jsx",
+    "Attribution":    "src/components/Attribution/Attribution.jsx",
+    "ArchiveCaption": "src/components/ArchiveCaption/ArchiveCaption.jsx",
+    "LogoBrand":      "src/components/LogoBrand/LogoBrand.jsx",
+    "HeroSection":    "src/components/HeroSection/HeroSection.jsx"
+  },
+  "overrides": {
+    "Button": { "cardMode": "column" }
+  },
+  "titleMap": {
+    "Components/Button":         "Button",
+    "Components/Eyebrow":        "Eyebrow",
+    "Components/PullQuote":      "PullQuote",
+    "Components/Attribution":    "Attribution",
+    "Components/ArchiveCaption": "ArchiveCaption",
+    "Components/LogoBrand":      "LogoBrand",
+    "Components/HeroSection":    "HeroSection"
+  }
+}
